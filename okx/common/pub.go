@@ -2,10 +2,7 @@ package common
 
 import (
 	"fmt"
-	. "github.com/nntaoli-project/goex/v2/httpcli"
-	"github.com/nntaoli-project/goex/v2/logger"
-	. "github.com/nntaoli-project/goex/v2/model"
-	. "github.com/nntaoli-project/goex/v2/util"
+	"github.com/fengid/goex/logger"
 	"net/http"
 	"net/url"
 )

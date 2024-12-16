@@ -2,9 +2,9 @@ package futures
 
 import (
 	"errors"
-	"github.com/nntaoli-project/goex/v2/model"
-	"github.com/nntaoli-project/goex/v2/okx/common"
-	"github.com/nntaoli-project/goex/v2/options"
+	"github.com/fengid/goex/model"
+	"github.com/fengid/goex/okx/common"
+	"github.com/fengid/goex/options"
 )
 
 type Swap struct {

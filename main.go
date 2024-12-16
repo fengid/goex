@@ -1,11 +1,11 @@
 package goex
 
 import (
-	"github.com/nntaoli-project/goex/v2/binance"
-	"github.com/nntaoli-project/goex/v2/httpcli"
-	"github.com/nntaoli-project/goex/v2/huobi"
-	"github.com/nntaoli-project/goex/v2/logger"
-	"github.com/nntaoli-project/goex/v2/okx"
+	"github.com/fengid/goex/binance"
+	"github.com/fengid/goex/httpcli"
+	"github.com/fengid/goex/huobi"
+	"github.com/fengid/goex/logger"
+	"github.com/fengid/goex/okx"
 	"reflect"
 )
 

@@ -2,7 +2,6 @@ package common
 
 import (
 	"encoding/json"
-	. "github.com/nntaoli-project/goex/v2/options"
 )
 
 type OKxV5 struct {

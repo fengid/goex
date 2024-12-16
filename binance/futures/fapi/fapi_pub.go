@@ -3,11 +3,10 @@ package fapi
 import (
 	"errors"
 	"fmt"
-	"github.com/nntaoli-project/goex/v2/binance/common"
-	. "github.com/nntaoli-project/goex/v2/httpcli"
-	"github.com/nntaoli-project/goex/v2/logger"
-	"github.com/nntaoli-project/goex/v2/model"
-	"github.com/nntaoli-project/goex/v2/util"
+	"github.com/fengid/goex/binance/common"
+	"github.com/fengid/goex/logger"
+	"github.com/fengid/goex/model"
+	"github.com/fengid/goex/util"
 	"net/http"
 	"net/url"
 )
