@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"github.com/buger/jsonparser"
 	"github.com/fengid/goex/logger"
+	. "github.com/fengid/goex/model"
 	"github.com/spf13/cast"
 	"time"
 )

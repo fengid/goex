@@ -1,9 +1,7 @@
 package goex
 
 import (
-	"github.com/fengid/goex/binance"
 	"github.com/fengid/goex/httpcli"
-	"github.com/fengid/goex/huobi"
 	"github.com/fengid/goex/logger"
 	"github.com/fengid/goex/okx"
 	"reflect"
@@ -14,9 +12,7 @@ var (
 )
 
 var (
-	OKx     = okx.New()
-	Binance = binance.New()
-	HuoBi   = huobi.New()
+	OKx = okx.New()
 )
 
 func SetDefaultHttpCli(cli httpcli.IHttpClient) {

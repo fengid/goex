@@ -2,6 +2,7 @@ package futures
 
 import (
 	"errors"
+	. "github.com/fengid/goex/model"
 )
 
 type CrossPrvApi struct {

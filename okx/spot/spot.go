@@ -1,6 +1,7 @@
 package spot
 
 import (
+	. "github.com/fengid/goex/model"
 	"github.com/fengid/goex/okx/common"
 	"github.com/fengid/goex/options"
 )

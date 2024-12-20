@@ -2,6 +2,7 @@ package common
 
 import (
 	"encoding/json"
+	. "github.com/fengid/goex/options"
 )
 
 type OKxV5 struct {

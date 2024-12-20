@@ -2,6 +2,7 @@ package spot
 
 import (
 	"errors"
+	. "github.com/fengid/goex/model"
 	"github.com/fengid/goex/okx/common"
 )
 
