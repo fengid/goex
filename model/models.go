@@ -38,31 +38,31 @@ func (OptionParameter) OrderClientID(cid string) OptionParameter {
 }
 
 type CurrencyPair struct {
-	Symbol               string  `json:"symbol,omitempty"`          //交易对
-	BaseSymbol           string  `json:"base_symbol,omitempty"`     //币种
-	QuoteSymbol          string  `json:"quote_symbol,omitempty"`    //交易区：usdt/usdc/btc ...
-	PricePrecision       int     `json:"price_precision,omitempty"` //价格小数点位数
-	QtyPrecision         int     `json:"qty_precision,omitempty"`   //数量小数点位数
+	Symbol               string  `json:"symbol,omitempty"`          // 交易对
+	BaseSymbol           string  `json:"base_symbol,omitempty"`     // 币种
+	QuoteSymbol          string  `json:"quote_symbol,omitempty"`    // 交易区：usdt/usdc/btc ...
+	PricePrecision       int     `json:"price_precision,omitempty"` // 价格小数点位数
+	QtyPrecision         int     `json:"qty_precision,omitempty"`   // 数量小数点位数
 	MinQty               float64 `json:"min_qty,omitempty"`
 	MaxQty               float64 `json:"max_qty,omitempty"`
 	MarketQty            float64 `json:"market_qty,omitempty"`
-	ContractVal          float64 `json:"contract_val,omitempty"`           //1张合约价值
-	ContractValCurrency  string  `json:"contract_val_currency,omitempty"`  //合约面值计价币
-	SettlementCurrency   string  `json:"settlement_currency,omitempty"`    //结算币
-	ContractAlias        string  `json:"contract_alias,omitempty"`         //交割合约alias
-	ContractDeliveryDate int64   `json:"contract_delivery_date,omitempty"` //合约交割日期
+	ContractVal          float64 `json:"contract_val,omitempty"`           // 1张合约价值
+	ContractValCurrency  string  `json:"contract_val_currency,omitempty"`  // 合约面值计价币
+	SettlementCurrency   string  `json:"settlement_currency,omitempty"`    // 结算币
+	ContractAlias        string  `json:"contract_alias,omitempty"`         // 交割合约alias
+	ContractDeliveryDate int64   `json:"contract_delivery_date,omitempty"` // 合约交割日期
 }
 
-//func (pair CurrencyPair) String() string {
+// func (pair CurrencyPair) String() string {
 //	return pair.Symbol
-//}
+// }
 
-//type FuturesCurrencyPair struct {
+// type FuturesCurrencyPair struct {
 //	CurrencyPair
 //	DeliveryDate int64   //结算日期
 //	OnboardDate  int64   //上线日期
 //	MarginAsset  float64 //保证金资产
-//}
+// }
 
 type Ticker struct {
 	Pair      CurrencyPair `json:"pair"`
@@ -102,6 +102,16 @@ type Depth struct {
 	Bids  DepthItems   `json:"bids"`
 }
 
+type Trade struct {
+	Pair    CurrencyPair `json:"pair"`
+	InstId  string       `json:"instId"`  // 产品ID
+	Side    string       `json:"side"`    // 成交方向 buy：买 sell：卖
+	Size    float64      `json:"sz"`      // 成交数量
+	Px      float64      `json:"px"`      // 成交价格
+	TradeId string       `json:"tradeId"` // 成交ID
+	UTime   time.Time    `json:"ut"`
+}
+
 type Kline struct {
 	Pair      CurrencyPair `json:"pair"`
 	Timestamp int64        `json:"t"`
@@ -114,19 +124,19 @@ type Kline struct {
 
 type Order struct {
 	Pair        CurrencyPair `json:"pair,omitempty"`
-	Id          string       `json:"id,omitempty"`       //订单ID
-	CId         string       `json:"c_id,omitempty"`     //客户端自定义ID
-	Side        OrderSide    `json:"side,omitempty"`     //交易方向: sell,buy
-	OrderTy     OrderType    `json:"order_ty,omitempty"` //类型: limit , market , ...
-	Status      OrderStatus  `json:"status,omitempty"`   //状态
+	Id          string       `json:"id,omitempty"`       // 订单ID
+	CId         string       `json:"c_id,omitempty"`     // 客户端自定义ID
+	Side        OrderSide    `json:"side,omitempty"`     // 交易方向: sell,buy
+	OrderTy     OrderType    `json:"order_ty,omitempty"` // 类型: limit , market , ...
+	Status      OrderStatus  `json:"status,omitempty"`   // 状态
 	Price       float64      `json:"price,omitempty"`
 	Qty         float64      `json:"qty,omitempty"`
 	ExecutedQty float64      `json:"executed_qty,omitempty"`
 	PriceAvg    float64      `json:"price_avg,omitempty"`
 	Fee         float64      `json:"fee,omitempty"`
-	FeeCcy      string       `json:"fee_ccy,omitempty"` //收取交易手续费币种
+	FeeCcy      string       `json:"fee_ccy,omitempty"` // 收取交易手续费币种
 	CreatedAt   int64        `json:"created_at,omitempty"`
-	FinishedAt  int64        `json:"finished_at,omitempty"` //订单完成时间
+	FinishedAt  int64        `json:"finished_at,omitempty"` // 订单完成时间
 	CanceledAt  int64        `json:"canceled_at,omitempty"`
 }
 
@@ -139,19 +149,19 @@ type Account struct {
 
 type FuturesPosition struct {
 	Pair     CurrencyPair `json:"pair,omitempty"`
-	PosSide  OrderSide    `json:"pos_side,omitempty"`  //开仓方向
+	PosSide  OrderSide    `json:"pos_side,omitempty"`  // 开仓方向
 	Qty      float64      `json:"qty,omitempty"`       // 持仓数量
-	AvailQty float64      `json:"avail_qty,omitempty"` //可平仓数量
-	AvgPx    float64      `json:"avg_px,omitempty"`    //开仓均价
+	AvailQty float64      `json:"avail_qty,omitempty"` // 可平仓数量
+	AvgPx    float64      `json:"avg_px,omitempty"`    // 开仓均价
 	LiqPx    float64      `json:"liq_px,omitempty"`    // 爆仓价格
-	Upl      float64      `json:"upl,omitempty"`       //盈亏
+	Upl      float64      `json:"upl,omitempty"`       // 盈亏
 	UplRatio float64      `json:"upl_ratio,omitempty"` // 盈亏率
-	Lever    float64      `json:"lever,omitempty"`     //杠杆倍数
+	Lever    float64      `json:"lever,omitempty"`     // 杠杆倍数
 }
 
 type FuturesAccount struct {
-	Coin      string  `json:"coin,omitempty"` //币种
-	Eq        float64 `json:"eq,omitempty"`   //总权益
+	Coin      string  `json:"coin,omitempty"` // 币种
+	Eq        float64 `json:"eq,omitempty"`   // 总权益
 	AvailEq   float64 `json:"avail_eq,omitempty"`
 	FrozenBal float64 `json:"frozen_bal,omitempty"`
 	MgnRatio  float64 `json:"mgn_ratio,omitempty"`
@@ -162,5 +172,5 @@ type FuturesAccount struct {
 type FundingRate struct {
 	Symbol string  `json:"symbol"`
 	Rate   float64 `json:"rate"`
-	Tm     int64   `json:"tm"` //资金费收取时间
+	Tm     int64   `json:"tm"` // 资金费收取时间
 }

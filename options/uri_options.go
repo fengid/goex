@@ -4,6 +4,7 @@ type UriOptions struct {
 	Endpoint                 string
 	TickerUri                string
 	DepthUri                 string
+	TradeUri                 string
 	KlineUri                 string
 	GetOrderUri              string
 	GetPendingOrdersUri      string

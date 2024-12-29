@@ -35,6 +35,27 @@ func (okx *OKxV5) GetDepth(pair CurrencyPair, size int, opt ...OptionParameter) 
 	return dep, responseBody, err
 }
 
+func (okx *OKxV5) GetTrade(pair CurrencyPair, limit int, opt ...OptionParameter) ([]Trade, []byte, error) {
+	params := url.Values{}
+	params.Set("instId", pair.Symbol)
+	params.Set("limit", fmt.Sprint(limit))
+	MergeOptionParams(&params, opt...)
+
+	data, responseBody, err := okx.DoNoAuthRequest("GET", okx.UriOpts.Endpoint+okx.UriOpts.TradeUri, &params)
+	if err != nil {
+		return nil, responseBody, err
+	}
+
+	tras, err := okx.UnmarshalOpts.TradeUnmarshaler(data)
+	if err != nil {
+		return nil, data, err
+	}
+
+	// dep.Pair = pair
+
+	return tras, responseBody, err
+}
+
 func (okx *OKxV5) GetTicker(pair CurrencyPair, opt ...OptionParameter) (*Ticker, []byte, error) {
 	params := url.Values{}
 	params.Set("instId", pair.Symbol)

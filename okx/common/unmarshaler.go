@@ -58,6 +58,38 @@ func (un *RespUnmarshaler) unmarshalDepthItem(data []byte) (DepthItems, error) {
 	return items, err
 }
 
+func (un *RespUnmarshaler) UnmarshalTrade(data []byte) ([]Trade, error) {
+	var (
+		tras = make([]Trade, 0)
+		err  error
+	)
+
+	_, err = jsonparser.ArrayEach(data, func(value []byte, dataType jsonparser.ValueType, offset int, err error) {
+		tra := Trade{}
+		_ = jsonparser.ObjectEach(value, func(key []byte, val []byte, dataType jsonparser.ValueType, offset int) error {
+			valStr := string(val)
+			switch string(key) {
+			case "instId":
+				tra.InstId = valStr
+			case "side":
+				tra.Side = valStr
+			case "sz":
+				tra.Size = cast.ToFloat64(valStr)
+			case "px":
+				tra.Px = cast.ToFloat64(valStr)
+			case "tradeId":
+				tra.TradeId = valStr
+			case "ts":
+				tra.UTime = time.UnixMilli(cast.ToInt64(valStr))
+			}
+			return nil
+		})
+		tras = append(tras, tra)
+	})
+
+	return tras, err
+}
+
 func (un *RespUnmarshaler) UnmarshalTicker(data []byte) (*Ticker, error) {
 	var tk = &Ticker{}
 

@@ -5,6 +5,7 @@ import "github.com/fengid/goex/model"
 type ResponseUnmarshaler func([]byte, interface{}) error
 type GetTickerResponseUnmarshaler func([]byte) (*model.Ticker, error)
 type GetDepthResponseUnmarshaler func([]byte) (*model.Depth, error)
+type GetTradeResponseUnmarshaler func([]byte) ([]model.Trade, error)
 type GetKlineResponseUnmarshaler func([]byte) ([]model.Kline, error)
 type CreateOrderResponseUnmarshaler func([]byte) (*model.Order, error)
 type GetOrderInfoResponseUnmarshaler func([]byte) (*model.Order, error)
@@ -22,6 +23,7 @@ type UnmarshalerOptions struct {
 	ResponseUnmarshaler                      ResponseUnmarshaler
 	TickerUnmarshaler                        GetTickerResponseUnmarshaler
 	DepthUnmarshaler                         GetDepthResponseUnmarshaler
+	TradeUnmarshaler                         GetTradeResponseUnmarshaler
 	KlineUnmarshaler                         GetKlineResponseUnmarshaler
 	CreateOrderResponseUnmarshaler           CreateOrderResponseUnmarshaler
 	GetOrderInfoResponseUnmarshaler          GetOrderInfoResponseUnmarshaler
